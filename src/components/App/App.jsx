@@ -7,20 +7,21 @@ import TotalCatchers from '../TotalCatchers';
 function App() {
   const [currentPitcher, setCurrentPitcher] = useState('Maud Nelson');
   const [currentCatcher, setCurrentCatcher] = useState('Elston Howard');
-
-  // const [pitcherList, setPitcherList] = useState(['Maud Nelson', 'Ila Borders', 'Don Newcombe', 'CC Sabathia']);
-  // const [catcherList, setCatcherList] = useState(['Roy Campanella', 'Elston Howard', 'Kenji Jojima']);
-  const pitcherList = useSelector((store) => store.pitcherList);
-  const catcherList = useSelector((store) => store.catcherList);
-
+  
   const [newPitcher, setNewPitcher] = useState('');
   const [newCatcher, setNewCatcher] = useState('');
-
-  const dispatch = useDispatch()
+  
+  const pitcherList = useSelector((store) => store.pitcherList);
+  const catcherList = useSelector((store) => store.catcherList);
 
   const handlePitcherNameChange = event => {
     setNewPitcher(event.target.value);
   };
+  const handleCatcherNameChange = event => {
+    setNewCatcher(event.target.value);
+  };
+  
+  const dispatch = useDispatch()
 
   // add new pitcher to the array. this will move to the pitcher reducer!
   const handlePitcherSubmit = event => {
@@ -32,10 +33,6 @@ function App() {
       payload: newPitcher
     })
     setNewPitcher('');
-  };
-
-  const handleCatcherNameChange = event => {
-    setNewCatcher(event.target.value);
   };
 
   // add new catcher to array. this will move to the catcher reducer!
